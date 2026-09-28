@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start a Project — BEXIRA</title>
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="sp-page">
+  <div class="sp-top">
+    <a class="brand" href="../index.html" aria-label="BEXIRA home">
+      <span class="brand-mark">B</span><span>BE<span class="x">X</span>IRA</span>
+    </a>
+    <a class="sp-exit" href="../index.html">Exit</a>
+  </div>
+
+  <div class="sp-wrap">
+    <div class="sp-intro">
+      <p class="eyebrow">START A PROJECT</p>
+      <h1>Let's understand what your business needs.</h1>
+      <p>Every project starts with understanding the problem. Tell us a little about your business, what you're trying to solve, and what information you currently have.</p>
+      <p class="sp-time">This takes about 3–5 minutes.</p>
+    </div>
+
+    <div class="sp-panel">
+      <div class="sp-labels">
+        <span data-lbl="1" class="on">01 — About You</span>
+        <span data-lbl="2">02 — Your Business</span>
+        <span data-lbl="3">03 — Your Challenge</span>
+        <span data-lbl="4">04 — Data &amp; Timeline</span>
+      </div>
+      <div class="sp-count-mobile" id="spCountMobile">Step 1 of 4</div>
+      <div class="sp-progress-track"><div class="sp-progress-fill" id="spProgress"></div></div>
+
+      <form id="spForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_KEY_HERE">
+        <input type="hidden" name="subject" value="New BEXIRA project enquiry">
+        <input type="hidden" name="redirect" value="brief-sent.html">
+        <label class="hp-field">Leave this empty<input type="checkbox" name="botcheck"></label>
+
+        <div class="sp-step active" data-step="1">
+          <h2>First, tell us who we're speaking with.</h2>
+          <div class="sp-field">
+            <label>Full Name *</label>
+            <input type="text" name="Full name" placeholder="Your full name" required autofocus>
+          </div>
+          <div class="sp-field">
+            <label>Work Email *</label>
+            <input type="email" name="Email" placeholder="you@company.com" required>
+          </div>
+          <div class="sp-field">
+            <label>Business / Company Name *</label>
+            <input type="text" name="Business name" placeholder="Your business name" required>
+          </div>
+          <div class="sp-field">
+            <label>Website or Social Media <span class="opt">(optional)</span></label>
+            <input type="text" name="Website or social" placeholder="https://…">
+          </div>
+          <div class="sp-nav"><span></span><button type="button" class="button dark sp-next">Continue</button></div>
+          <p class="sp-submit-note">Your information is only used to understand your project and communicate with you about your enquiry.</p>
+        </div>
+
+        <div class="sp-step" data-step="2">
+          <h2>Help us understand what you do.</h2>
+          <div class="sp-field">
+            <label>Tell us briefly about your business *</label>
+            <textarea name="About the business" placeholder="What do you sell or provide, and who are your customers?" required></textarea>
+          </div>
+          <div class="sp-field">
+            <label>Where is your business right now? <span class="opt">(optional)</span></label>
+            <div class="sp-pills" data-field="Business stage">
+              <div class="sp-pill">Startup / Early stage</div>
+              <div class="sp-pill">Growing business</div>
+              <div class="sp-pill">Established business</div>
+              <div class="sp-pill">Other</div>
+            </div>
+            <input type="hidden" name="Business stage">
+          </div>
+          <div class="sp-nav"><button type="button" class="sp-back">← Back</button><button type="button" class="button dark sp-next">Continue</button></div>
+        </div>
+
+        <div class="sp-step" data-step="3">
+          <h2>What would you like BEXIRA to help you understand?</h2>
+          <div class="sp-field">
+            <div class="sp-checks">
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Business dashboard">Business dashboard</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Sales & revenue analysis">Sales &amp; revenue analysis</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Customer analysis">Customer analysis</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Marketing analysis">Marketing analysis</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Business performance analysis">Business performance analysis</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Data cleaning & reporting">Data cleaning &amp; reporting</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Something else">Something else</label>
+            </div>
+          </div>
+          <div class="sp-field">
+            <label>What problem are you currently trying to solve? *</label>
+            <textarea name="The problem" placeholder="Tell us what isn't working, what you can't currently see clearly, or what decision you're trying to make." required></textarea>
+          </div>
+          <div class="sp-field">
+            <label>What would you like to be able to do differently after this project? <span class="opt">(optional)</span></label>
+            <textarea name="Desired outcome" placeholder="For example: understand which products drive profit, identify our best customers, track performance more clearly, or make better marketing decisions."></textarea>
+          </div>
+          <div class="sp-nav"><button type="button" class="sp-back">← Back</button><button type="button" class="button dark sp-next">Continue</button></div>
+        </div>
+
+        <div class="sp-step" data-step="4">
+          <h2>Let's determine what's feasible.</h2>
+          <div class="sp-field">
+            <label>What information do you currently have?</label>
+            <div class="sp-checks">
+              <label class="sp-check"><input type="checkbox" name="Data available" value="Excel / CSV files">Excel / CSV files</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="POS data">POS data</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="CRM data">CRM data</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="E-commerce data">E-commerce data</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="Accounting / financial data">Accounting / financial data</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="Data from multiple sources">Data from multiple sources</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="Not sure">I'm not sure</label>
+            </div>
+          </div>
+          <div class="sp-field">
+            <label>When would you like to start? *</label>
+            <div class="sp-pills" data-field="Timeline">
+              <div class="sp-pill">As soon as possible</div>
+              <div class="sp-pill">Within 1 month</div>
+              <div class="sp-pill">1–3 months</div>
+              <div class="sp-pill">I'm exploring options</div>
+            </div>
+            <input type="hidden" name="Timeline">
+            <div class="sp-field-err">Pick one to continue.</div>
+          </div>
+          <div class="sp-field">
+            <label>How did you hear about BEXIRA? <span class="opt">(optional)</span></label>
+            <div class="sp-pills" data-field="Referral source">
+              <div class="sp-pill">LinkedIn</div>
+              <div class="sp-pill">Referral</div>
+              <div class="sp-pill">Google / Search</div>
+              <div class="sp-pill">Social media</div>
+              <div class="sp-pill">Other</div>
+            </div>
+            <input type="hidden" name="Referral source">
+          </div>
+          <div class="sp-field">
+            <label>Anything else you'd like us to know? <span class="opt">(optional)</span></label>
+            <textarea name="Anything else" placeholder="Is there anything about your business, challenge, or project that would be helpful for us to know?"></textarea>
+          </div>
+          <div class="sp-nav">
+            <button type="button" class="sp-back">← Back</button>
+            <button type="submit" class="button dark sp-submit" id="spSubmitBtn">Submit Project Brief</button>
+          </div>
+          <p class="sp-submit-note">By submitting this brief, you're giving BEXIRA the information needed to understand your project. No commitment is required at this stage.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const steps = Array.from(document.querySelectorAll('.sp-step'));
+  const labels = Array.from(document.querySelectorAll('.sp-labels span'));
+  const progress = document.getElementById('spProgress');
+  const countMobile = document.getElementById('spCountMobile');
+  let current = 0;
+
+  function show(i){
+    steps.forEach((s,idx)=>s.classList.toggle('active', idx===i));
+    labels.forEach((l,idx)=>l.classList.toggle('on', idx===i));
+    progress.style.width = (((i+1)/steps.length)*100) + '%';
+    countMobile.textContent = 'Step ' + (i+1) + ' of ' + steps.length;
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function validate(step){
+    const req = step.querySelectorAll('input[required], textarea[required]');
+    for (const el of req){ if(!el.value.trim()){ el.focus(); return false; } }
+    // Timeline is the only required pill group (step 4)
+    const timelineHidden = step.querySelector('input[type="hidden"][name="Timeline"]');
+    if (timelineHidden && !timelineHidden.value){
+      const err = step.querySelector('.sp-field-err');
+      if (err) err.style.display = 'block';
+      return false;
+    }
+    return true;
+  }
+
+  document.querySelectorAll('.sp-next').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(!validate(steps[current])) return;
+      if(current < steps.length-1){ current++; show(current); }
+    });
+  });
+  document.querySelectorAll('.sp-back').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ if(current>0){ current--; show(current); } });
+  });
+  labels.forEach((l,idx)=>{
+    l.style.cursor = idx <= current ? 'pointer' : 'default';
+  });
+
+  // Pill single-select groups
+  document.querySelectorAll('.sp-pills').forEach(wrap=>{
+    const field = wrap.dataset.field;
+    const step = wrap.closest('.sp-step');
+    const hidden = step.querySelector('input[type="hidden"][name="'+field+'"]');
+    wrap.querySelectorAll('.sp-pill').forEach(p=>{
+      p.addEventListener('click', ()=>{
+        wrap.querySelectorAll('.sp-pill').forEach(o=>o.classList.remove('selected'));
+        p.classList.add('selected');
+        hidden.value = p.textContent;
+        const err = step.querySelector('.sp-field-err');
+        if (err) err.style.display = 'none';
+      });
+    });
+  });
+
+  document.getElementById('spForm').addEventListener('submit', ()=>{
+    const btn = document.getElementById('spSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+  });
+
+  show(0);
+})();
+</script>
+</body>
+</html>
