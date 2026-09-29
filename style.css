@@ -262,3 +262,7 @@
 .thanks-step p{color:#626660;font-size:14px;margin:0}
 .thanks-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:30px}
 .thanks-hint{font-size:13px;color:#8b8e86}
+
+/* ===== Founder bio + portfolio link ===== */
+.founder-bio{margin-top:22px;color:#626660;font-size:14.5px;max-width:480px}
+.founder-portfolio-link{display:inline-block;margin-top:16px;font-size:13.5px}
