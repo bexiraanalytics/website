@@ -222,49 +222,6 @@
     btn.disabled = true;
     btn.textContent = 'Submitted';
   });
-
-  .form-field.invalid input,
-.form-field.invalid textarea,
-.form-field.invalid select {
-  border-color: #dc2626;
-}
-
-.error-message {
-  color: #dc2626;
-  font-size: 0.85rem;
-  margin-top: 6px;
-}
-  function validateStep(step) {
-  const fields = step.querySelectorAll(
-    'input[required], textarea[required], select[required]'
-  );
-
-  let valid = true;
-
-  fields.forEach(field => {
-    const wrapper = field.closest('.form-field');
-    const error = wrapper.querySelector('.error-message');
-
-    if (!field.checkValidity()) {
-      valid = false;
-      wrapper.classList.add('invalid');
-
-      if (field.validity.valueMissing) {
-        error.textContent = 'This field is required.';
-      } else if (field.validity.typeMismatch) {
-        error.textContent = 'Please enter a valid email address.';
-      }
-    } else {
-      wrapper.classList.remove('invalid');
-      error.textContent = '';
-    }
-  });
-
-  return valid;
-}
-  if (validateStep(currentStep)) {
-    goToNextStep();
-}
   
   show(0);
 })();
