@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
-  
+
 <style>
-/* Form validation */
+/* Form validation states */
 .sp-field input.invalid,
 .sp-field textarea.invalid {
   border-color: #d93025;
@@ -64,9 +64,9 @@
       <div class="sp-progress-track"><div class="sp-progress-fill" id="spProgress"></div></div>
 
       <form id="spForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="bdeb4134-4bf4-47cb-a210-68f720c36d8c">
+        <input type="hidden" name="access_key" value="PASTE_YOUR_WEB3FORMS_KEY_HERE">
         <input type="hidden" name="subject" value="New BEXIRA project enquiry">
-        <input type="hidden" name="redirect" value="https://bexiraanalytics.github.io/website/start-a-project/brief-sent.html">
+        <input type="hidden" name="redirect" value="brief-sent.html">
         <label class="hp-field">Leave this empty<input type="checkbox" name="botcheck"></label>
 
         <div class="sp-step active" data-step="1">
@@ -201,101 +201,82 @@
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
-  function validate(step){
-  let valid = true;
-
-  const req = step.querySelectorAll('input[required], textarea[required]');
-
-  req.forEach(el => {
-    const value = el.value.trim();
-
-    // Remove previous error
-    el.classList.remove('invalid');
+  function showFieldError(el, message){
+    el.classList.add('invalid');
 
     let error = el.parentElement.querySelector('.sp-field-error');
-    if (!error) {
+    if (!error){
       error = document.createElement('div');
       error.className = 'sp-field-error';
       el.parentElement.appendChild(error);
     }
 
-    error.classList.remove('show');
-
-    // Empty field
-    if (!value) {
-      el.classList.add('invalid');
-      error.textContent = 'This field is required.';
-      error.classList.add('show');
-
-      if (valid) el.focus();
-      valid = false;
-      return;
-    }
-
-    // Email validation
-    if (el.type === 'email' && !el.validity.valid) {
-      el.classList.add('invalid');
-      error.textContent = 'Please enter a valid email address.';
-      error.classList.add('show');
-
-      if (valid) el.focus();
-      valid = false;
-    }
-  });
-
-  // Timeline is required
-  const timelineHidden = step.querySelector(
-    'input[type="hidden"][name="Timeline"]'
-  );
-
-  if (timelineHidden && !timelineHidden.value) {
-    const err = step.querySelector('.sp-field-err');
-
-    if (err) {
-      err.style.display = 'block';
-    }
-
-    if (valid) {
-      const firstPill = step.querySelector('.sp-pill');
-      if (firstPill) firstPill.focus();
-    }
-
-    valid = false;
+    error.textContent = message;
+    error.classList.add('show');
   }
 
-  return valid;
-}
+  function clearFieldError(el){
+    el.classList.remove('invalid');
+
+    const error = el.parentElement.querySelector('.sp-field-error');
+    if (error) error.classList.remove('show');
+  }
+
+  function validateField(el){
+    const value = el.value.trim();
+
+    if (!value){
+      showFieldError(el, 'This field is required.');
+      return false;
+    }
+
+    if (el.type === 'email' && !el.validity.valid){
+      showFieldError(el, 'Please enter a valid email address.');
+      return false;
+    }
+
+    clearFieldError(el);
+    return true;
+  }
+
   function validate(step){
+    let valid = true;
+
     const req = step.querySelectorAll('input[required], textarea[required]');
-    for (const el of req){ if(!el.value.trim()){ el.focus(); return false; } }
+
+    req.forEach(el => {
+      if (!validateField(el)){
+        if (valid) el.focus();
+        valid = false;
+      }
+    });
+
     // Timeline is the only required pill group (step 4)
     const timelineHidden = step.querySelector('input[type="hidden"][name="Timeline"]');
     if (timelineHidden && !timelineHidden.value){
       const err = step.querySelector('.sp-field-err');
       if (err) err.style.display = 'block';
-      return false;
+      valid = false;
     }
-    return true;
+
+    return valid;
   }
 
-  document.querySelectorAll(
-  '#spForm input[required], #spForm textarea[required]'
-).forEach(el => {
+  // Validate required fields when the user leaves them.
+  document.querySelectorAll('#spForm input[required], #spForm textarea[required]').forEach(el => {
+    el.addEventListener('blur', () => {
+      validateField(el);
+    });
 
-  el.addEventListener('input', () => {
-    const error = el.parentElement.querySelector('.sp-field-error');
-
-    // If the field is now valid, remove the red state
-    if (el.value.trim() && el.validity.valid) {
-      el.classList.remove('invalid');
-
-      if (error) {
-        error.classList.remove('show');
+    el.addEventListener('input', () => {
+      // Once the user starts correcting an invalid field,
+      // remove the red state as soon as the value becomes valid.
+      if (el.value.trim() && el.validity.valid){
+        clearFieldError(el);
       }
-    }
+    });
   });
 
-});
   document.querySelectorAll('.sp-next').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       if(!validate(steps[current])) return;
@@ -328,9 +309,9 @@
   document.getElementById('spForm').addEventListener('submit', ()=>{
     const btn = document.getElementById('spSubmitBtn');
     btn.disabled = true;
-    btn.textContent = 'Submitted';
+    btn.textContent = 'Sending…';
   });
-  
+
   show(0);
 })();
 </script>
