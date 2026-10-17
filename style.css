@@ -269,3 +269,26 @@
 
 .sim-note{background:#fff;border:1px solid #deded8;border-radius:12px;padding:14px 18px;font-size:.9rem;line-height:1.5;color:#777b75;max-width:720px;margin:20px 0}
 .sim-note strong{color:#171918}
+
+.bx-packages{max-width:1100px;margin:48px auto 0;font-family:'DM Sans',sans-serif;color:#171918}
+.bx-eyebrow{font-family:'Manrope',sans-serif;font-size:.75rem;letter-spacing:.14em;font-weight:700;color:#777b75;margin:0 0 20px}
+.bx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.bx-card{background:#fff;border:1px solid #deded8;border-radius:16px;padding:28px;display:flex;flex-direction:column}
+.bx-card h3{font-family:'Manrope',sans-serif;font-size:1.25rem;line-height:1.25;margin:0 0 8px}
+.bx-for{color:#777b75;font-size:.95rem;line-height:1.5;margin:0 0 18px}
+.bx-card ul{list-style:none;padding:0;margin:0 0 18px}
+.bx-card li{position:relative;padding-left:20px;margin-bottom:10px;font-size:.95rem;line-height:1.5}
+.bx-card li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:1px;background:currentColor}
+.bx-small{font-size:.85rem;line-height:1.5;color:#777b75;margin:0 0 16px}
+.bx-time{margin:auto 0 0;padding-top:16px;border-top:1px solid #deded8;font-size:.85rem;font-weight:600}
+.bx-card--featured{background:#202321;border-color:#202321;color:#f5f4f0}
+.bx-card--featured .bx-for{color:#b9bcb6}
+.bx-card--featured .bx-time{border-top-color:rgba(245,244,240,.2)}
+.bx-badge{align-self:flex-start;display:inline-block;margin-bottom:14px;padding:4px 10px;border-radius:999px;background:#f5f4f0;color:#171918;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.bx-notes{margin-top:32px;max-width:720px}
+.bx-notes p{font-size:1rem;line-height:1.6;margin:0 0 14px}
+.bx-need{margin:24px 0}
+.bx-need h4{font-family:'Manrope',sans-serif;font-size:1rem;margin:0 0 10px}
+.bx-need ul{margin:0;padding-left:18px;line-height:1.7}
+.bx-cta{display:inline-block;margin-top:8px;padding:14px 26px;border-radius:999px;background:#171918;color:#f5f4f0;font-weight:600;text-decoration:none}
+.bx-cta:hover{background:#202321}
