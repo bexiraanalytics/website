@@ -266,3 +266,6 @@
 /* ===== Founder bio + portfolio link ===== */
 .founder-bio{margin-top:22px;color:#626660;font-size:14.5px;max-width:480px}
 .founder-portfolio-link{display:inline-block;margin-top:16px;font-size:13.5px}
+
+.sim-note{background:#fff;border:1px solid #deded8;border-radius:12px;padding:14px 18px;font-size:.9rem;line-height:1.5;color:#777b75;max-width:720px;margin:20px 0}
+.sim-note strong{color:#171918}
