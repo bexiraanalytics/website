@@ -66,7 +66,7 @@
       <form id="spForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="bdeb4134-4bf4-47cb-a210-68f720c36d8c">
         <input type="hidden" name="subject" value="New BEXIRA project enquiry">
-        <input type="hidden" name="redirect" value="brief-sent.html">
+        <input type="hidden" name="redirect" value="https://bexiraanalytics.github.io/website/start-a-project/brief-sent.html">
         <label class="hp-field">Leave this empty<input type="checkbox" name="botcheck"></label>
 
         <div class="sp-step active" data-step="1">
@@ -309,6 +309,12 @@
         if (err) err.style.display = 'none';
       });
     });
+  });
+
+  document.getElementById('spForm').addEventListener('submit', ()=>{
+    const btn = document.getElementById('spSubmitBtn');
+    btn.disabled = false;
+    btn.textContent = 'Submitted';
   });
 
   show(0);
