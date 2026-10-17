@@ -114,12 +114,10 @@
           <h2>What would you like BEXIRA to help you understand?</h2>
           <div class="sp-field">
             <div class="sp-checks">
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Business dashboard">Business dashboard</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Sales & revenue analysis">Sales &amp; revenue analysis</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Customer analysis">Customer analysis</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Marketing analysis">Marketing analysis</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Business performance analysis">Business performance analysis</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Data cleaning & reporting">Data cleaning &amp; reporting</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Dashboard build">Dashboard build</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Sales & customer review">Sales &amp; customer review</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Not sure yet, help me decide">Not sure yet, help me decide</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Data cleaning & organizing">Data cleaning &amp; organizing</label>
               <label class="sp-check"><input type="checkbox" name="Help needed" value="Something else">Something else</label>
             </div>
           </div>
@@ -174,6 +172,13 @@
             <label>Anything else you'd like us to know? <span class="opt">(optional)</span></label>
             <textarea name="Anything else" placeholder="Is there anything about your business, challenge, or project that would be helpful for us to know?"></textarea>
           </div>
+         <div class="sp-field">
+          <label for="budget_in_mind">Do you have a budget in mind? <span class="opt">(optional)</span></label>
+          <input type="text" id="budget_in_mind" name="budget_in_mind"
+         placeholder="e.g. ₦300,000 or $400. Leave blank if you're not sure">
+        <p class="help">This helps us suggest the right package. A rough number is fine, and we'll quote a fixed price after the discovery call.</p>
+       </div>
+          
           <div class="sp-nav">
             <button type="button" class="sp-back">← Back</button>
             <button type="submit" class="button dark sp-submit" id="spSubmitBtn">Submit Project Brief</button>
