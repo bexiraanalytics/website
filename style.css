@@ -270,7 +270,8 @@
 .sim-note{background:#fff;border:1px solid #deded8;border-radius:12px;padding:14px 18px;font-size:.9rem;line-height:1.5;color:#777b75;max-width:720px;margin:20px 0}
 .sim-note strong{color:#171918}
 
-.bx-packages{max-width:1100px;margin:48px auto 0;font-family:'DM Sans',sans-serif;color:#171918}
+.bx-packages{max-width:1100px;margin:48px auto 0;padding-bottom:88px;font-family:'DM Sans',sans-serif;color:#171918}
+@media (max-width:700px){.bx-packages{padding-bottom:56px}}
 .bx-eyebrow{font-family:'Manrope',sans-serif;font-size:.75rem;letter-spacing:.14em;font-weight:700;color:#777b75;margin:0 0 20px}
 .bx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .bx-card{background:#fff;border:1px solid #deded8;border-radius:16px;padding:28px;display:flex;flex-direction:column}
