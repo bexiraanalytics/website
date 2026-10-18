@@ -293,3 +293,7 @@
 .bx-need ul{margin:0;padding-left:18px;line-height:1.7}
 .bx-cta{display:inline-block;margin-top:8px;padding:14px 26px;border-radius:999px;background:#171918;color:#f5f4f0;font-weight:600;text-decoration:none}
 .bx-cta:hover{background:#202321}
+
+.bx-social{margin:10px 0 0;font-size:.9rem;color:#777b75}
+.bx-social a{color:inherit;font-weight:600;text-decoration:none;margin:0 4px;border-bottom:1px solid currentColor}
+.bx-social a:hover{color:#171918}
