@@ -8,8 +8,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css?v=2">
 
+<script>
+window.bexiraTrack = window.bexiraTrack || function (event, params) {
+  params = params || {};
+  try {
+    if (typeof window.gtag === "function") window.gtag("event", event, params);
+    if (typeof window.plausible === "function") window.plausible(event, { props: params });
+    (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: event }, params));
+  } catch (e) {}
+};
+</script>
 <style>
 /* Form validation states */
 .sp-field input.invalid,
@@ -66,6 +76,7 @@
       <form id="spForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="bdeb4134-4bf4-47cb-a210-68f720c36d8c">
         <input type="hidden" name="subject" value="New BEXIRA project enquiry">
+        <input type="hidden" name="Requested tier" value="">
         <input type="hidden" name="redirect" value="https://bexiraanalytics.github.io/website/start-a-project/brief-sent.html">
         <label class="hp-field">Leave this empty<input type="checkbox" name="botcheck"></label>
 
@@ -121,7 +132,8 @@
               <label class="sp-check"><input type="checkbox" name="Help needed" value="Dashboard build">Dashboard build</label>
               <label class="sp-check"><input type="checkbox" name="Help needed" value="Sales & customer review">Sales &amp; customer review</label>
               <label class="sp-check"><input type="checkbox" name="Help needed" value="Not sure yet, help me decide">Not sure yet, help me decide</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Data cleaning & organizing">Data cleaning &amp; organizing</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Data cleaning & organising">Data cleaning &amp; organising</label>
+              <label class="sp-check"><input type="checkbox" name="Help needed" value="Growth partner (monthly retainer)">Growth partner (monthly retainer)</label>
               <label class="sp-check"><input type="checkbox" name="Help needed" value="Something else">Something else</label>
             </div>
           </div>
@@ -148,7 +160,7 @@
               <label class="sp-check"><input type="checkbox" name="Data available" value="Accounting / financial data">Accounting / financial data</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="Data from multiple sources">Data from multiple sources</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="Not sure">I'm not sure</label>
-              <label class="sp-check"><input type="checkbox" name="Data available" value="Not sure">Mostly in chats, DMs or a notebook</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="Mostly chats, DMs or a notebook">Mostly in chats, DMs or a notebook</label>
             </div>
           </div>
           <div class="sp-field">
@@ -179,9 +191,8 @@
           </div>
          <div class="sp-field">
           <label for="budget_in_mind">Do you have a budget in mind? <span class="opt">(optional)</span></label>
-          <input type="text" id="budget_in_mind" name="budget_in_mind"
-         placeholder="e.g. ₦300,000 or $400. Leave blank if you're not sure">
-        <p class="help">This helps us suggest the right package. A rough number is fine, and we'll quote a fixed price after the discovery call.</p>
+          <input type="text" id="budget_in_mind" name="budget_in_mind" placeholder="e.g. ₦750,000 or $500. Leave blank if you're not sure">
+        <p class="help">This helps us point you to the right tier. A rough number is fine, and we'll quote a fixed price after the discovery call.</p>
        </div>
           
           <div class="sp-nav">
@@ -320,7 +331,37 @@
     const btn = document.getElementById('spSubmitBtn');
     btn.disabled = false;
     btn.textContent = 'Submitted';
+    const tierField = document.querySelector('input[name="Requested tier"]');
+    window.bexiraTrack('brief_submitted', { tier: (tierField && tierField.value) ? tierField.value : 'none' });
   });
+
+  // --- Read ?tier= from the pricing cards and prepare the brief ---------
+  (function () {
+    var TIERS = {
+      signal:  { label: 'Signal Review', help: ['Sales & customer review'] },
+      profit:  { label: 'Profit Review + Dashboard', help: ['Sales & customer review', 'Dashboard build'] },
+      partner: { label: 'Growth Partner', help: ['Growth partner (monthly retainer)'] }
+    };
+    var key = new URLSearchParams(window.location.search).get('tier');
+    var tier = key ? TIERS[key.toLowerCase()] : null;
+    if (!tier) return; // missing or unknown: behave like the normal form
+
+    var hidden = document.querySelector('input[name="Requested tier"]');
+    if (hidden) hidden.value = tier.label;
+
+    document.querySelectorAll('input[name="Help needed"]').forEach(function (cb) {
+      if (tier.help.indexOf(cb.value) !== -1) cb.checked = true;
+    });
+
+    var intro = document.querySelector('.sp-intro');
+    if (intro) {
+      var note = document.createElement('p');
+      note.className = 'sp-tier-note';
+      note.textContent = 'You came from the ' + tier.label + ' card. Your brief is set up to match, and you can change anything below.';
+      intro.appendChild(note);
+    }
+    window.bexiraTrack('tier_brief_opened', { tier: key.toLowerCase() });
+  })();
 
   show(0);
 })();
