@@ -1,3 +1,36 @@
+// --- Safe analytics wrapper ------------------------------------------
+// Works with GA4, Plausible, or neither. Nothing is sent until the
+// founder adds an analytics snippet to the <head> of the pages.
+window.bexiraTrack = function (event, params) {
+  params = params || {};
+  try {
+    if (typeof window.gtag === "function") window.gtag("event", event, params);
+    if (typeof window.plausible === "function") window.plausible(event, { props: params });
+    (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: event }, params));
+  } catch (e) { /* never let analytics break a button */ }
+};
+
+// --- Tier CTA configuration -------------------------------------------
+// Paste the Calendly / Cal.com event URL between the quotes when you have
+// one. While it is empty, the Growth Partner button opens the brief form.
+const CALENDLY_URL = ""; // e.g. "https://calendly.com/your-name/30min"
+const BRIEF_FLOW = "start-a-project/";
+
+document.querySelectorAll("[data-tier]").forEach(function (el) {
+  var tier = el.getAttribute("data-tier");
+  if (tier === "partner" && CALENDLY_URL) {
+    el.setAttribute("href", CALENDLY_URL);
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+  } else {
+    el.setAttribute("href", BRIEF_FLOW + "?tier=" + encodeURIComponent(tier));
+  }
+  el.addEventListener("click", function () {
+    window.bexiraTrack("cta_click", { tier: tier });
+  });
+});
+
+// --- Navigation menu ---------------------------------------------------
 const menu = document.querySelector(".menu");
 const links = document.querySelector(".nav-links");
 menu?.addEventListener("click", () => {
