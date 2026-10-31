@@ -296,6 +296,7 @@
 .bx-card .bx-cta{width:100%;justify-content:center;text-align:center;min-height:48px;margin-top:auto}
 .bx-card--featured{background:#202321;border-color:#202321;color:#f5f4f0}
 .bx-card--featured .bx-for{color:#f5f4f0}
+.bx-card--featured .bx-role{color:#b9bcb6}
 .bx-card--featured .bx-desc,.bx-card--featured .bx-small,.bx-card--featured .bx-price .from,.bx-card--featured .bx-price .usd{color:#b9bcb6}
 .bx-card--featured .bx-price{color:#f5f4f0}
 .bx-card--featured .bx-term{color:#b9bcb6;border-bottom-color:rgba(245,244,240,.2)}
