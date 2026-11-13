@@ -87,17 +87,17 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
             <input type="text" name="Full name" placeholder="Your full name" required autofocus>
           </div>
           <div class="sp-field">
-            <label>Work Email *</label>
-            <input type="email" name="Email" placeholder="you@company.com" required>
+            <label>Email address *</label>
+            <input type="email" name="Email" placeholder="you@example.com" required>
           </div>
           <div class="sp-field">
             <label>Business / Company Name *</label>
             <input type="text" name="Business name" placeholder="Your business name" required>
           </div>
           <div class="sp-field">
-            <label for="country">Where is your business based?</label>
-            <input type="text" id="country" name="country" placeholder="e.g. Nigeria, UK, Canada" required>
-         </div>
+            <label for="country">Which city and country is your business based in? *</label>
+            <input type="text" id="country" name="City and country" placeholder="e.g. Lagos, Nigeria" required>
+          </div>
           <div class="sp-field">
             <label>Website or Social Media <span class="opt">(optional)</span></label>
             <input type="text" name="Website or social" placeholder="https://…">
@@ -109,41 +109,50 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
         <div class="sp-step" data-step="2">
           <h2>Help us understand what you do.</h2>
           <div class="sp-field">
-            <label>Tell us briefly about your business *</label>
-            <textarea name="About the business" placeholder="What do you sell or provide, and who are your customers?" required></textarea>
+            <label>What do you sell, to whom, and do you make it yourself or buy it to resell? *</label>
+            <textarea name="What they sell" placeholder="One or two lines is enough. If it's a mix, say roughly what share you make." required></textarea>
           </div>
           <div class="sp-field">
-            <label>Where is your business right now? <span class="opt">(optional)</span></label>
-            <div class="sp-pills" data-field="Business stage">
-              <div class="sp-pill">Startup / Early stage</div>
-              <div class="sp-pill">Growing business</div>
-              <div class="sp-pill">Established business</div>
-              <div class="sp-pill">Other</div>
+            <label>Where do you sell? <span class="opt">(optional, choose all that apply)</span></label>
+            <div class="sp-checks">
+              <label class="sp-check"><input type="checkbox" name="Sales channels" value="Physical shop">Physical shop</label>
+              <label class="sp-check"><input type="checkbox" name="Sales channels" value="Instagram / WhatsApp">Instagram / WhatsApp</label>
+              <label class="sp-check"><input type="checkbox" name="Sales channels" value="Own website">Own website</label>
+              <label class="sp-check"><input type="checkbox" name="Sales channels" value="Marketplace (e.g. Jumia, Konga)">Marketplace (e.g. Jumia, Konga)</label>
+              <label class="sp-check"><input type="checkbox" name="Sales channels" value="Wholesale / distributors">Wholesale / distributors</label>
+              <label class="sp-check"><input type="checkbox" name="Sales channels" value="Other">Other</label>
             </div>
-            <input type="hidden" name="Business stage">
+          </div>
+          <div class="sp-field">
+            <label>Roughly what were your sales last month? *</label>
+            <div class="sp-pills" data-field="Sales last month" data-required="true">
+              <div class="sp-pill">Under ₦2M</div>
+              <div class="sp-pill">₦2M–₦5M</div>
+              <div class="sp-pill">₦5M–₦15M</div>
+              <div class="sp-pill">₦15M–₦50M</div>
+              <div class="sp-pill">Over ₦50M</div>
+              <div class="sp-pill">I'm not sure</div>
+            </div>
+            <input type="hidden" name="Sales last month">
+            <p class="help">An estimate is fine. Your numbers stay private and are only used to prepare for our call.</p>
+            <div class="sp-field-err">Pick one to continue.</div>
           </div>
           <div class="sp-nav"><button type="button" class="sp-back">← Back</button><button type="button" class="button dark sp-next">Continue</button></div>
         </div>
 
         <div class="sp-step" data-step="3">
-          <h2>What would you like BEXIRA to help you understand?</h2>
-          <div class="sp-field">
-            <div class="sp-checks">
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Dashboard build">Dashboard build</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Sales & customer review">Sales &amp; customer review</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Not sure yet, help me decide">Not sure yet, help me decide</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Data cleaning & organising">Data cleaning &amp; organising</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Growth partner (monthly retainer)">Growth partner (monthly retainer)</label>
-              <label class="sp-check"><input type="checkbox" name="Help needed" value="Something else">Something else</label>
-            </div>
-          </div>
+          <h2>Tell us what's going on.</h2>
           <div class="sp-field">
             <label>What problem are you currently trying to solve? *</label>
             <textarea name="The problem" placeholder="Tell us what isn't working, what you can't currently see clearly, or what decision you're trying to make." required></textarea>
           </div>
           <div class="sp-field">
-            <label>What would you like to be able to do differently after this project? <span class="opt">(optional)</span></label>
-            <textarea name="Desired outcome" placeholder="For example: understand which products drive profit, identify our best customers, track performance more clearly, or make better marketing decisions."></textarea>
+            <label>What do you think is causing it? <span class="opt">(optional)</span></label>
+            <textarea name="Their theory" placeholder="Your own theory, even if you're not sure. &quot;I have no idea&quot; is a fine answer."></textarea>
+          </div>
+          <div class="sp-field">
+            <label>What would you like to be able to decide after this project? <span class="opt">(optional)</span></label>
+            <textarea name="Decision wanted" placeholder="For example: whether to open a second shop, stop stocking a product, close a sales channel, or change a price."></textarea>
           </div>
           <div class="sp-nav"><button type="button" class="sp-back">← Back</button><button type="button" class="button dark sp-next">Continue</button></div>
         </div>
@@ -151,21 +160,33 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
         <div class="sp-step" data-step="4">
           <h2>Let's determine what's feasible.</h2>
           <div class="sp-field">
-            <label>What information do you currently have?</label>
-            <div class="sp-checks">
+            <label>What information do you currently have? *</label>
+            <div class="sp-checks" data-required="true">
               <label class="sp-check"><input type="checkbox" name="Data available" value="Excel / CSV files">Excel / CSV files</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="POS data">POS data</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="CRM data">CRM data</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="E-commerce data">E-commerce data</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="Accounting / financial data">Accounting / financial data</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="Data from multiple sources">Data from multiple sources</label>
-              <label class="sp-check"><input type="checkbox" name="Data available" value="Not sure">I'm not sure</label>
               <label class="sp-check"><input type="checkbox" name="Data available" value="Mostly chats, DMs or a notebook">Mostly in chats, DMs or a notebook</label>
+              <label class="sp-check"><input type="checkbox" name="Data available" value="Not sure">I'm not sure</label>
             </div>
+            <div class="sp-field-err">Pick at least one to continue.</div>
+          </div>
+          <div class="sp-field">
+            <label>How far back do your sales records go? <span class="opt">(optional)</span></label>
+            <div class="sp-pills" data-field="Records go back">
+              <div class="sp-pill">Less than 3 months</div>
+              <div class="sp-pill">3–12 months</div>
+              <div class="sp-pill">1–2 years</div>
+              <div class="sp-pill">More than 2 years</div>
+              <div class="sp-pill">I'm not sure</div>
+            </div>
+            <input type="hidden" name="Records go back">
           </div>
           <div class="sp-field">
             <label>When would you like to start? *</label>
-            <div class="sp-pills" data-field="Timeline">
+            <div class="sp-pills" data-field="Timeline" data-required="true">
               <div class="sp-pill">As soon as possible</div>
               <div class="sp-pill">Within 1 month</div>
               <div class="sp-pill">1–3 months</div>
@@ -173,6 +194,10 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
             </div>
             <input type="hidden" name="Timeline">
             <div class="sp-field-err">Pick one to continue.</div>
+          </div>
+          <div class="sp-field">
+            <label>Is there anything about the business the numbers won't show? <span class="opt">(optional)</span></label>
+            <textarea name="What the numbers won't show" placeholder="For example: who else is involved in decisions, a supplier you depend on, or something that has recently changed."></textarea>
           </div>
           <div class="sp-field">
             <label>How did you hear about BEXIRA? <span class="opt">(optional)</span></label>
@@ -184,10 +209,6 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
               <div class="sp-pill">Other</div>
             </div>
             <input type="hidden" name="Referral source">
-          </div>
-          <div class="sp-field">
-            <label>Anything else you'd like us to know? <span class="opt">(optional)</span></label>
-            <textarea name="Anything else" placeholder="Is there anything about your business, challenge, or project that would be helpful for us to know?"></textarea>
           </div>
           
           <div class="sp-nav">
@@ -267,13 +288,22 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
       }
     });
 
-    // Timeline is the only required pill group (step 4)
-    const timelineHidden = step.querySelector('input[type="hidden"][name="Timeline"]');
-    if (timelineHidden && !timelineHidden.value){
-      const err = step.querySelector('.sp-field-err');
-      if (err) err.style.display = 'block';
-      valid = false;
-    }
+    // Required pill groups (single choice) and required checkbox groups
+    step.querySelectorAll('.sp-pills[data-required]').forEach(wrap => {
+      const field = wrap.closest('.sp-field');
+      const hidden = field.querySelector('input[type="hidden"]');
+      const err = field.querySelector('.sp-field-err');
+      const ok = hidden && hidden.value;
+      if (err) err.style.display = ok ? 'none' : 'block';
+      if (!ok) valid = false;
+    });
+    step.querySelectorAll('.sp-checks[data-required]').forEach(wrap => {
+      const field = wrap.closest('.sp-field');
+      const err = field.querySelector('.sp-field-err');
+      const ok = wrap.querySelector('input:checked');
+      if (err) err.style.display = ok ? 'none' : 'block';
+      if (!ok) valid = false;
+    });
 
     return valid;
   }
@@ -316,13 +346,27 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
         wrap.querySelectorAll('.sp-pill').forEach(o=>o.classList.remove('selected'));
         p.classList.add('selected');
         hidden.value = p.textContent;
-        const err = step.querySelector('.sp-field-err');
+        const err = wrap.closest('.sp-field').querySelector('.sp-field-err');
         if (err) err.style.display = 'none';
       });
     });
   });
 
-  document.getElementById('spForm').addEventListener('submit', ()=>{
+  // Hide the "pick at least one" message as soon as a box is ticked
+  document.querySelectorAll('.sp-checks[data-required]').forEach(wrap=>{
+    wrap.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
+      cb.addEventListener('change', ()=>{
+        if (wrap.querySelector('input:checked')){
+          const err = wrap.closest('.sp-field').querySelector('.sp-field-err');
+          if (err) err.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  document.getElementById('spForm').addEventListener('submit', (e)=>{
+    // The last step has no Continue button, so check its required answers here
+    if (!validate(steps[current])){ e.preventDefault(); return; }
     const btn = document.getElementById('spSubmitBtn');
     btn.disabled = false;
     btn.textContent = 'Submitted';
@@ -333,9 +377,9 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
   // --- Read ?tier= from the pricing cards and prepare the brief ---------
   (function () {
     var TIERS = {
-      signal:  { label: 'Signal Review', help: ['Sales & customer review'] },
-      profit:  { label: 'Profit Review + Dashboard', help: ['Sales & customer review', 'Dashboard build'] },
-      partner: { label: 'Growth Partner', help: ['Growth partner (monthly retainer)'] }
+      signal:  { label: 'Signal Review' },
+      profit:  { label: 'Profit Review + Dashboard' },
+      partner: { label: 'Growth Partner' }
     };
     var key = new URLSearchParams(window.location.search).get('tier');
     var tier = key ? TIERS[key.toLowerCase()] : null;
@@ -343,10 +387,6 @@ window.bexiraTrack = window.bexiraTrack || function (event, params) {
 
     var hidden = document.querySelector('input[name="Requested tier"]');
     if (hidden) hidden.value = tier.label;
-
-    document.querySelectorAll('input[name="Help needed"]').forEach(function (cb) {
-      if (tier.help.indexOf(cb.value) !== -1) cb.checked = true;
-    });
 
     var intro = document.querySelector('.sp-intro');
     if (intro) {
